@@ -35,14 +35,23 @@ export default function Card({
       </p>
       <div className="mt-auto flex items-center justify-between gap-3 pt-4">
         {tools || datasets ? (
-          <a
-            className="inline-flex max-h-9 items-center gap-2 border border-[--dark-bg] px-4 py-[8px] text-center text-xs font-bold transition-colors hover:bg-[--primary-color] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--primary-color] dark:border-[--light-bg]"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GO TO SITE <FiArrowUpRight aria-hidden="true" />
-          </a>
+          url ? (
+            <a
+              className="inline-flex max-h-9 items-center gap-2 border border-[--dark-bg] px-4 py-[8px] text-center text-xs font-bold transition-colors hover:bg-[--primary-color] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--primary-color] dark:border-[--light-bg]"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GO TO SITE <FiArrowUpRight aria-hidden="true" />
+            </a>
+          ) : (
+            <span
+              className="inline-flex max-h-9 items-center border border-[--line] px-4 py-[8px] text-center text-xs font-bold text-[--muted]"
+              aria-label={`No active site link for ${title}`}
+            >
+              SITE UNAVAILABLE
+            </span>
+          )
         ) : (
           <CopyToClipboard text={description}>
             <button

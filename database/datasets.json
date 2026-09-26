@@ -34,7 +34,7 @@
   {
     "title": "Awesome Public Datasets",
     "description": "Awesome Public Datasets is a curated list of publicly available datasets across various domains and disciplines. It is hosted on GitHub and maintained by the community. The repository contains a collection of links to high-quality datasets that are freely accessible for research, analysis, and other purposes.",
-    "url": "http://www.github.com/awesomedata/awesome-public-datasets",
+    "url": "https://github.com/awesomedata/awesome-public-datasets",
     "tags": [
       "numeric",
       "text",
@@ -116,7 +116,7 @@
   {
     "title": "opendata CERN",
     "description": "The CERN Open Data portal provides access to a vast collection of research data from CERN, including the Large Hadron Collider experiments. It offers open licenses, extensive documentation, and various tools for exploration and analysis. This valuable resource for researchers and educators in particle physics is constantly updated and available in multiple formats.",
-    "url": "http://opendata.cern.ch/",
+    "url": "https://opendata.cern.ch/",
     "tags": [
       "cern-open-data-portal",
       "large-hadron-collider",

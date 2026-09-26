@@ -8,10 +8,39 @@ import { ModalProps } from "@/types";
 export default function Modal({ data, tools, datasets, setModalActive }: ModalProps) {
   const [copied, setCopied] = useState(false);
   const resetCopied = useRef<ReturnType<typeof setTimeout>>();
+  const dialogRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const previousFocus = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+    const dialog = dialogRef.current;
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    dialog?.querySelector<HTMLElement>(focusableSelector)?.focus();
+
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setModalActive(false);
+      if (event.key === "Escape") {
+        setModalActive(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialog) return;
+      const focusableElements = dialog.querySelectorAll<HTMLElement>(focusableSelector);
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!firstElement || !lastElement) {
+        event.preventDefault();
+      } else if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        firstElement.focus();
+      } else if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     };
 
     document.addEventListener("keydown", closeOnEscape);
@@ -20,6 +49,7 @@ export default function Modal({ data, tools, datasets, setModalActive }: ModalPr
     return () => {
       document.removeEventListener("keydown", closeOnEscape);
       document.body.style.overflow = "";
+      if (previousFocus?.isConnected) previousFocus.focus();
       if (resetCopied.current) clearTimeout(resetCopied.current);
     };
   }, [setModalActive]);
@@ -39,6 +69,7 @@ export default function Modal({ data, tools, datasets, setModalActive }: ModalPr
       }}
     >
       <section
+        ref={dialogRef}
         className="max-h-[90vh] w-full max-w-2xl overflow-y-auto border border-[--dark-bg] bg-[--light-bg] p-5 text-[--dark-bg] shadow-2xl dark:border-[--light-bg] dark:bg-[--dark-bg] dark:text-[--light-bg] sm:p-7"
         role="dialog"
         aria-modal="true"
