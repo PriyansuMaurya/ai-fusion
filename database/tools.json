@@ -288,8 +288,17 @@
       "Conversational-AI",
       "Multimedia-integration"
     ]
+  },
+  {
+    "title": "agent-qa",
+    "description": "Natural-language web, Android, and iOS testing through CLI and MCP. Combines memidex persistent memory with validated self-improvement to reuse testing knowledge and produce reviewable run evidence.",
+    "url": "https://vostride.com",
+    "tags": [
+      "testing",
+      "automation",
+      "mcp",
+      "developer-tools"
+    ]
   }
-
-
 ]
 
