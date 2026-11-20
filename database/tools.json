@@ -299,6 +299,17 @@
       "mcp",
       "developer-tools"
     ]
+  },
+  {
+    "title": "DDScore",
+    "description": "First-pass due diligence for private companies. DDScore cross-checks pitch decks and supporting documents against each other and public sources, then summarizes evidence, risks, and follow-up questions in a structured report.",
+    "url": "https://www.ddscore.ai/",
+    "tags": [
+      "AI-research",
+      "due-diligence",
+      "private-markets",
+      "document-analysis"
+    ]
   }
 ]
 
